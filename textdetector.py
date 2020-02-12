@@ -2,29 +2,27 @@ import cv2
 import pytesseract
 from pytesseract import Output
 from PIL import Image
+import image_filter
 
-image_path='1.png'
+image_path='image2.png'
 img=cv2.imread(image_path)
 
+#img=image_filter.rotate_anticlockwise(img)
 
 
-
-# img = cv2.transpose(img)
-# img=cv2.flip(img,flipCode=1)
-# cv2.imwrite("rotated.jpg",img)
-
-
-
+custom_config_number=r'--oem 3 --psm 6 outputbase digits'
 custom_config=r'--oem 3 --psm 6'
 
 custom_config1=r'--oem 3 --psm 1'
 
 custom_config2=r'--oem 3 --psm 11'
 
-text=pytesseract.image_to_string(img,config=custom_config1)
+text=pytesseract.image_to_string(img,config=custom_config)
 d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
 print(text)
+
+
 
 # n_boxes = len(d['text'])
 # for i in range(n_boxes):
