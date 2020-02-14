@@ -4,7 +4,6 @@ from pytesseract import Output
 from PIL import Image
 import image_filter
 
-image_path='image2.png'
 
 
 def graphtextdetextor(image_path):
@@ -39,3 +38,8 @@ def graphtextdetextor(image_path):
 
     # cv2.imshow('img', img)
     # cv2.waitKey(0)
+
+
+if "__main__"== __name__:
+    image_path='image2.png'
+    graphtextdetextor(image_path)
