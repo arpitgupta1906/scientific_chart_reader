@@ -5,33 +5,37 @@ from PIL import Image
 import image_filter
 
 image_path='image2.png'
-img=cv2.imread(image_path)
-
-#img=image_filter.rotate_anticlockwise(img)
 
 
-custom_config_number=r'--oem 3 --psm 6 outputbase digits'
-custom_config=r'--oem 3 --psm 6'
+def graphtextdetextor(image_path):
+    img=cv2.imread(image_path)
 
-custom_config1=r'--oem 3 --psm 1'
-
-custom_config2=r'--oem 3 --psm 11'
-
-text=pytesseract.image_to_string(img,config=custom_config)
-d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
-
-print(text)
+    #img=image_filter.rotate_anticlockwise(img)
 
 
+    custom_config_number=r'--oem 3 --psm 6 outputbase digits'
+    custom_config=r'--oem 3 --psm 6'
 
-# n_boxes = len(d['text'])
-# for i in range(n_boxes):
-#     if int(d['conf'][i]) > 60:
-#         (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-#         img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    custom_config1=r'--oem 3 --psm 1'
+
+    custom_config2=r'--oem 3 --psm 11'
+
+    text=pytesseract.image_to_string(img,config=custom_config)
+    d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
+
+    print(text)
+    return text
 
 
 
+    # n_boxes = len(d['text'])
+    # for i in range(n_boxes):
+    #     if int(d['conf'][i]) > 60:
+    #         (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
+    #         img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-# cv2.imshow('img', img)
-# cv2.waitKey(0)
+
+
+
+    # cv2.imshow('img', img)
+    # cv2.waitKey(0)
