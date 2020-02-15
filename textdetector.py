@@ -20,10 +20,11 @@ def graphtextdetextor(image_path):
     custom_config2=r'--oem 3 --psm 11'
 
     text=pytesseract.image_to_string(img,config=custom_config)
+    text2=pytesseract.image_to_string(img,config=custom_config1)
     d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
-    print(text)
-    return text
+    # print(text2)
+    return [text,text2]
 
 
 
