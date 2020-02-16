@@ -51,8 +51,11 @@ def extractdata(image_path):
         if o<=0:
             break
         i=i+1
+    if graph_title==str(ydata[0]):
+        graph_title=""
 
-    data_dictionary={"Graph_title":graph_title,
+    data_dictionary={
+        "Graph_title":graph_title,
         "Yaxis_title":y_axis_title,
         "Xaxis_title":x_axis_title,
         "Yaxis_plotdata":ydata,
@@ -69,12 +72,12 @@ def extractdata(image_path):
     return data_dictionary
 
     # with open('person.txt','w') as json_file:
-    #     json.dump(data_dictionary,json_file)
+    # json.dump(data_dictionary,json_file)
 
 
 
 
 if __name__=='__main__':
-    image_path='image2.png'
+    image_path='1.png'
     a=extractdata(image_path)
     print(a)
