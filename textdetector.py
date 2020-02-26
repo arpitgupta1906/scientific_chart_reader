@@ -32,6 +32,7 @@ def graphtextdetextor(image_path):
 
 
 
+
     # n_boxes = len(d['text'])
     # for i in range(n_boxes):
     #     if int(d['conf'][i]) > 60:
@@ -48,3 +49,5 @@ def graphtextdetextor(image_path):
 if "__main__"== __name__:
     image_path='image2.png'
     graphtextdetextor(image_path)
+
+    
