@@ -78,6 +78,6 @@ def extractdata(image_path):
 
 
 if __name__=='__main__':
-    image_path='1.png'
+    image_path='image5.png'
     a=extractdata(image_path)
     print(a)
