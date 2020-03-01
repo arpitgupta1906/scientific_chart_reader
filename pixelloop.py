@@ -1,43 +1,13 @@
 import cv2
 import matplotlib.pyplot as plt
-
-image_path="image5.png"
-
-image=cv2.imread(image_path)
-image=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-
-
-# cv2.imshow("grayscale",image)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+import numpy as np
 
 def blur(image):
     return cv2.GaussianBlur(image,(5,5),0)
 
-# def thresholding(image):
-#     # image=blur(image)
-#     return cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-
-# image=thresholding(image)
-# image=blur(image)
-
-h,w=image.shape
-
-
-# some=0
-# flag=0
-# for i in range(h):
-#     for j in range(w):
-#         if image[i,j]==0:
-#             print(str(i)+" "+str(j))
-#             some =some+1
-#         if some==10:
-#             flag=1
-#             break
-#     if flag==1:
-#         break
-
-
+def thresholding(image):
+    # image=blur(image)
+    return cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
 
 def threshold(T,image):
@@ -49,32 +19,110 @@ def threshold(T,image):
 
     return image
 
-image=threshold(250,image)
-
 def xaxiscoordinate(image):
     h,w=image.shape
     flag=0
     for y in range(h-1,0,-1):
-        for x in range(w*2//3):
+        for x in range(0,w*2//3,5):
             flag=1
-            for i in range(80):
+            for i in range(5):
                 if image[y,x+i]!=0:
                     flag=0
                     break
             if flag==1:
-                # y=y-40
-                # j=0
-                # while image[y,x]==0:
-                #     x=x+1
-                
-                # while image[y,x]==255:
-                #     y=y-1
+                return [y,x] 
 
-                return [y-1,x] 
 
-#implement a checker to verify line starting from between
+def heightcalculation(image):
+    h,w=image.shape
+    xy,xx=xaxiscoordinate(image)
+    print([xy,xx])
+    plt.imshow(image,cmap="gray")
+    plt.show()
+    y=yiniial=xy
+    x=xx
+    heightpixellist=[]
 
-print(xaxiscoordinate(image))
 
-plt.imshow(image,cmap="gray")
-plt.show()
+    while x<w-30:
+        while image[y,x]==255 and x<w-10:
+            x=x+1
+        
+        flag=0
+        while image[y,x]==0 and y>10:
+            flag=1
+            y=y-1
+
+        if flag==1:
+            heightpixellist.append(yiniial-y)
+            y=yiniial
+
+        while image[y,x]==0 and x<w-10:
+            x=x+1
+
+    return heightpixellist
+
+
+def iterate_regions(image):
+    h, w = image.shape
+
+    for i in range(h - 15):
+      for j in range(w - 15):
+        im_region = image[i:(i + 16), j:(j + 16)]
+        yield im_region, i, j
+
+
+def filtered_image(image):
+    h,w=image.shape
+
+    op=np.zeros((h-15,w-15))
+    
+    for im_region,i,j in iterate_regions(image):
+        flag=0
+        a,b=im_region.shape
+        for y in range(a):
+            for x in range(b):
+                if y==0 or y==a-1 or x==0 or x==b-1:
+                    if im_region[y,x]>0:
+                        flag=1
+                        break 
+            if flag==1:
+                break 
+        
+        if flag==1:
+            op[i,j]=255
+        else :
+            op[i,j]=0
+    
+    return op
+
+
+def initialcall():
+
+    image_path="image2.png"
+
+    image=cv2.imread(image_path,2)
+    
+    # image=cv2.medianBlur(image,5)
+    # image=thresholding(image)
+
+
+
+    image=threshold(250,image)
+
+    image=filtered_image(image)
+
+    #implement a checker to verify line starting from between
+
+    # print(xaxiscoordinate(image))
+    plt.axis("off")
+    plt.imshow(image,cmap="gray")
+
+    plt.savefig("image2_filtered.png")
+    plt.show()
+
+
+if "__main__"==__name__:
+    image_path="image2_filtered.png"
+    image=cv2.imread(image_path,2)
+    print(heightcalculation(image))
