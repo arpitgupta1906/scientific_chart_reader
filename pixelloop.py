@@ -99,7 +99,7 @@ def filtered_image(image):
 
 def initialcall():
 
-    image_path="image2.png"
+    image_path="1.png"
 
     image=cv2.imread(image_path,2)
     
@@ -118,7 +118,7 @@ def initialcall():
     plt.axis("off")
     plt.imshow(image,cmap="gray")
 
-    plt.savefig("image2_filtered.png")
+    plt.savefig("1_filtered.png")
     plt.show()
 
 
@@ -126,3 +126,4 @@ if "__main__"==__name__:
     image_path="image2_filtered.png"
     image=cv2.imread(image_path,2)
     print(heightcalculation(image))
+    # initialcall()
