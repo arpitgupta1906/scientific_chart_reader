@@ -47,7 +47,7 @@ def graphtextdetextor(image_path):
 
 
 if "__main__"== __name__:
-    image_path='image2.png'
+    image_path='image5.png'
     graphtextdetextor(image_path)
-
+    
     

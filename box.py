@@ -1,14 +1,15 @@
 import cv2
 import numpy as np
-
+import matplotlib.pyplot as plt
 # Read the image
 img = cv2.imread('image5.png', 0)
+# cv2.imwrite("grayscaled",img)
  
 # Thresholding the image
-(thresh, img_bin) = cv2.threshold(img, 128, 255,cv2.THRESH_BINARY|     cv2.THRESH_OTSU)
+(thresh, img_bin) = cv2.threshold(img, 240, 255,0)
 # Invert the image
 img_bin = 255-img_bin 
-#cv2.imwrite("Image_bin.jpg",img_bin)
+# cv2.imwrite("Image_bin.jpg",img_bin)
 
 # Defining a kernel length
 kernel_length = np.array(img).shape[1]//80
@@ -31,8 +32,9 @@ verticle_lines_img = 255-verticle_lines_img
 img_temp2 = cv2.erode(img_bin, hori_kernel, iterations=3)
 horizontal_lines_img = cv2.dilate(img_temp2, hori_kernel, iterations=3)
 horizontal_lines_img = 255-horizontal_lines_img
-cv2.imwrite("horizontal_lines.jpg",horizontal_lines_img)
- 
+# cv2.imwrite("horizontal_lines.jpg",horizontal_lines_img)
+plt.imshow(horizontal_lines_img,cmap="gray")
+plt.show()
  # Weighting parameters, this will decide the quantity of an image to be added to make a new image.
 alpha = 0.5
 beta = 1.0 - alpha
