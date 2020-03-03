@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 # Read the image
 img = cv2.imread('image5.png', 0)
-# cv2.imwrite("grayscaled",img)
+cv2.imwrite("grayscaled.jpgb",img)
  
 # Thresholding the image
 (thresh, img_bin) = cv2.threshold(img, 240, 255,0)
