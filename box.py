@@ -2,14 +2,23 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 # Read the image
+<<<<<<< HEAD
 img = cv2.imread('image5.png', 0)
 cv2.imwrite("grayscaled.jpgb",img)
+=======
+img = cv2.imread('1.png', 0)
+cv2.imwrite("grayscaled.jpg",img)
+>>>>>>> 301cc99288b0b75a97887469b56cc423da525b40
  
 # Thresholding the image
 (thresh, img_bin) = cv2.threshold(img, 240, 255,0)
 # Invert the image
 img_bin = 255-img_bin 
+<<<<<<< HEAD
 # cv2.imwrite("Image_bin.jpg",img_bin)
+=======
+cv2.imwrite("Image_bin.jpg",img_bin)
+>>>>>>> 301cc99288b0b75a97887469b56cc423da525b40
 
 # Defining a kernel length
 kernel_length = np.array(img).shape[1]//80
