@@ -3,6 +3,10 @@ import textdetector
 
 
 def extractdata(image_path):
+    """
+    Takes normal image path as input and returns the extracted data
+    and the range ratio
+    """
     text1,text2=textdetector.graphtextdetextor(image_path)
     data1=text1.strip().split('\n')
     data2=text2.strip().split('\n')

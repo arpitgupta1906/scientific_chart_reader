@@ -1,8 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-# Read the image
-img = cv2.imread('1.png', 0)
+
 
 def obtainbars(img):
     """
@@ -36,9 +35,11 @@ def obtainbars(img):
     return horizontal_lines_img
     
 if __name__=="__main__":
-    img=cv2.imread('1.png',0)
+    # Read the image
+    # img = cv2.imread('1.png', 0)
+    img=cv2.imread('image2.png',0)
     horizontal_lines_img=obtainbars(img)
-    # cv2.imwrite("horizontal_lines.jpg",horizontal_lines_img)
+    cv2.imwrite("test.png",horizontal_lines_img)
     plt.imshow(horizontal_lines_img,cmap="gray")
     plt.show()
 
