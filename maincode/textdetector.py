@@ -7,6 +7,9 @@ from PIL import Image
 
 
 def graphtextdetextor(image_path):
+    """
+    pass image path as an argument
+    """
     img=cv2.imread(image_path)
 
     #img=image_filter.rotate_anticlockwise(img)
@@ -47,7 +50,7 @@ def graphtextdetextor(image_path):
 
 
 if "__main__"== __name__:
-    image_path='1.png'
-    graphtextdetextor(image_path)
-    
+    image_path='image2.png'
+    d=graphtextdetextor(image_path)
+    print(d[3])
     

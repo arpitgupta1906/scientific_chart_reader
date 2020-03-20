@@ -34,9 +34,13 @@ def xaxiscoordinate(image):
 
 
 def heightcalculation(image):
+    """
+    This function returns yaxisminimum,bar height,and the positions of
+    the bars.
+    """
     h,w=image.shape
     xy,xx=xaxiscoordinate(image)
-    print([xy,xx])
+    # print([xy,xx])
     
     # plt.imshow(image,cmap="gray")
     # plt.show()
@@ -66,7 +70,7 @@ def heightcalculation(image):
         # if flag==1:
         barlocation.append((x+xi)/2)
 
-    return [heightpixellist,barlocation[:len(barlocation)-1]]
+    return [xy,heightpixellist,barlocation[:len(barlocation)-1]]
 
 
 #####Unused#####
@@ -126,7 +130,7 @@ def initialcall():
 
 
 if "__main__"==__name__:
-    image_path="image2_filtered.png"
+    image_path="test.png"
     image=cv2.imread(image_path,0)
     print(heightcalculation(image))
     # initialcall()
