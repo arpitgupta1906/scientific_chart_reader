@@ -17,6 +17,7 @@ def mainfunction(img_path):
     only_bars=bar_extracter.obtainbars(img_gray)
 
     hei=heightcalculator.heightcalculation(only_bars)
+    ##########
     yaxisminimum=hei[0]
     heights=hei[1]
     barlocation1=hei[2]
@@ -32,7 +33,7 @@ def mainfunction(img_path):
     if len(barlocation1)!=len(barlocation2):
         j=0
         for i in range(len(barlocation2)):
-            if abs(barlocation1[i]-barlocation2[j])>30:
+            if abs(barlocation1[j]-barlocation2[i])>30:
                 newheights.append(0)
             else:
                 newheights.append(heights[j])
@@ -47,8 +48,9 @@ def mainfunction(img_path):
         bar_readings.append(readingofabar)
 
     print(bar_readings)
-
+    print(barlocation2)
+    print(barlocation1)
 
 if __name__=="__main__":
-    img_path="image2.png"
+    img_path="image4.png"
     mainfunction(img_path)

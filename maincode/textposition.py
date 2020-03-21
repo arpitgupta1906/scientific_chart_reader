@@ -111,13 +111,13 @@ def barlabelandheightratio(img,yaxisminimum=0):
     # print(unit_data)
     # print(height_ratio)
     # print(bartitle)
-    # print(bartitleposition)
+    print(bartitleposition)
 
     return [height_ratio,bartitle,bartitleposition]
     
 
 if __name__=="__main__":
-    img_path = 'image2.png'
+    img_path = 'image4.png'
     img=cv2.imread(img_path)
     yaxisminimum=554
     d=barlabelandheightratio(img,yaxisminimum)
