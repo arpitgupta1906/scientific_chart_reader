@@ -130,7 +130,7 @@ def initialcall():
 
 
 if "__main__"==__name__:
-    image_path="test.png"
+    image_path="image2extracted.png"
     image=cv2.imread(image_path,0)
     print(heightcalculation(image))
     # initialcall()

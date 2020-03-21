@@ -52,5 +52,5 @@ def mainfunction(img_path):
     print(barlocation1)
 
 if __name__=="__main__":
-    img_path="image4.png"
+    img_path="girlfriends.png"
     mainfunction(img_path)
