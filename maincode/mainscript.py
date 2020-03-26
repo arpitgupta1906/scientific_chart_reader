@@ -29,9 +29,14 @@ def mainfunction(img_path):
 
     data['datatitles']=bartitle
 
+    ##############
+    # print(barlocation2)
+    # print(barlocation1)
+
     newheights=[]
     if len(barlocation1)!=len(barlocation2):
         j=0
+        barlocation1.append(img.shape[1])
         for i in range(len(barlocation2)):
             if abs(barlocation1[j]-barlocation2[i])>30:
                 newheights.append(0)
@@ -47,10 +52,12 @@ def mainfunction(img_path):
         readingofabar=rangeratio*heights[i]//heightratio
         bar_readings.append(readingofabar)
 
+    print(data['datatitles'])
+    
     print(bar_readings)
-    print(barlocation2)
-    print(barlocation1)
+    # print(barlocation2)
+    # print(barlocation1)
 
 if __name__=="__main__":
-    img_path="girlfriends.png"
+    img_path="raghav.png"
     mainfunction(img_path)

@@ -10,7 +10,7 @@ def barlabelandheightratio(img,yaxisminimum=0):
     the x axis labels and the postiton of the bars
     """
 
-
+    
     y=img.shape[0]-yaxisminimum
 
 
@@ -53,6 +53,8 @@ def barlabelandheightratio(img,yaxisminimum=0):
     bartitle=[]
 
     labelbegin=0
+
+# return the beginning coordinates of the labels 
     for i in range(len(matrix)):
         if int(matrix[i][4])<y:
             labelbegin=i 
@@ -73,8 +75,11 @@ def barlabelandheightratio(img,yaxisminimum=0):
         if abs(yaverage-yaverage2)<=10 and abs(xaverage-xaverage2)<=30:
             j=xaverage
             break 
-
-
+    ############
+    maxlength=img.shape[1]
+    maxheight=img.shape[0]
+    matrix.append(['_',str(maxlength),str(maxheight),str(maxlength),str(maxheight)])
+    #code that returns the bar positions
     for i in range(labelbegin,len(matrix)-1):
         yaverage=(int(matrix[i][2])+int(matrix[i][4]))/2
         xaverage=(int(matrix[i][1])+int(matrix[i][3]))/2
@@ -101,6 +106,7 @@ def barlabelandheightratio(img,yaxisminimum=0):
         else:
             s=s+matrix[i][0]
             diff=((int(matrix[i][1])+int(matrix[i][3]))/2)
+            #if the label is one letter then directly add the coordinate
             if len(s)==1:
                 bartitleposition.append(diff)
             else:
@@ -111,7 +117,7 @@ def barlabelandheightratio(img,yaxisminimum=0):
     # print(unit_data)
     # print(height_ratio)
     # print(bartitle)
-    print(bartitleposition)
+    # print(bartitleposition)
 
     return [height_ratio,bartitle,bartitleposition]
     
