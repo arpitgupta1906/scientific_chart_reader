@@ -1,13 +1,19 @@
 import cv2
-import bar_extracter
-import heightcalculator
-import extracted_data
-import textposition
+from . import bar_extracter
+from . import heightcalculator
+from . import extracted_data
+from . import textposition
 
 
 def mainfunction(img_path):
     img=cv2.imread(img_path)
+    # img=img_path
+    ###########
+
+    #############
     img_gray=cv2.imread(img_path,0)
+    # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    #############
 
     ed=extracted_data.extractdata(img_path)
 
