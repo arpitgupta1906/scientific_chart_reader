@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
 from .maincode.mainscript import mainfunction
-from django.views.generic import CreateView,View
+from django.views.generic import CreateView,View,TemplateView
 from .models import IMAGE
 from .forms import ImageUploadForm
 from django.urls import reverse_lazy
@@ -35,3 +35,8 @@ class OutputView(View):
             'labels':labels,
             'readings':readings
             })
+
+
+
+class testhtml(TemplateView):
+    template_name='core/index.html'
