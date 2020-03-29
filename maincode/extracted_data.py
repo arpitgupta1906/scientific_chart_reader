@@ -25,7 +25,7 @@ def extractdata(image_path):
     k=k[1:-1]
 
     graph_title=data1[0]
-    data_titles=k[-1].strip().split(' ')
+    # data_titles=k[-1].strip().split(' ')
 
     diff=[]
 
@@ -63,7 +63,7 @@ def extractdata(image_path):
         "Yaxis_title":y_axis_title,
         "Xaxis_title":x_axis_title,
         "Yaxis_plotdata":ydata,
-        "Data_titles":data_titles
+        "Data_titles":" "
     }
 
     # print("Graph Title: ",graph_title)
