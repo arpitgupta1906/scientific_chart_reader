@@ -5,6 +5,10 @@ from django.views.generic import CreateView,View,TemplateView
 from .models import IMAGE
 from .forms import ImageUploadForm
 from django.urls import reverse_lazy
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # def mainpage(request):
 #     if request.method=='POST' and request.FILES['myfile']:
@@ -19,19 +23,23 @@ from django.urls import reverse_lazy
 class ImageInputView(CreateView):
     model=IMAGE
     form_class=ImageUploadForm
-    template_name='index.html'
-    success_url=reverse_lazy('output')
+    template_name='core/input.html'
+    success_url=reverse_lazy('core:output')
 
 
 class OutputView(View):
     def get(self,request):
         img=IMAGE.objects.order_by('-pk')[0]
         img_path=img.data.url
+
+        img_patha=img_path
+        #to get absolute file path
+        img_path=BASE_DIR+img_path
         output_data=mainfunction(img_path)
         labels=output_data[0]
         readings=output_data[1]
-        return render(request,'output.html',{
-            'path':img_path,
+        return render(request,'core/output.html',{
+            'path':img_patha,
             'labels':labels,
             'readings':readings
             })

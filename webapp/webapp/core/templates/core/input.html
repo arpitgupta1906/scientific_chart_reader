@@ -1,3 +1,12 @@
-{% extends 'index.html' %}
-{% block content %}
-{% endblock %}
+{% extends 'core/index.html' %}
+  {% block content %}
+    <div class="container">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.data }}
+        <button type="submit" class="btn btn-primary btn-lg">Upload Image</button>
+      </form>
+    </div>
+
+
+  {% endblock %}
