@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import mainpage
+from .views import testhtml,ImageInputView,OutputView
 
 urlpatterns = [
-    path('',mainpage,name='index'),    
+    path('',testhtml.as_view(),name='index'),    
 ]
