@@ -1,21 +1,21 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <link rel="stylesheet" href="{% static 'core/css/web.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
 
     <script src="{% static 'core/js/jquery.min.js' %}"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
-    
-    
+
+
 </head>
 
 <body>
 
 
-  
+
 
   <!--navbar-->
 
@@ -25,7 +25,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
+              <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Scientific Chart Reader</a>
           </div>
@@ -33,7 +33,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
              <!--<li class="dropdown">
-                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a> 
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Page 1-1</a></li>
                   <li><a href="#">Page 1-2</a></li>
@@ -52,7 +52,7 @@
       </nav>
 
       <!--container-->
-      
+
       <div class="row" id="section-1-gradient">
         <div class="col-sm-6">
           <h1 class="large">Scientific Chart Reader</h1>
@@ -63,19 +63,21 @@
           </div>
         </div>
       </div>
-      
-    
+
+
 <!-- particles.js container -->
- <div id="particles-js"></div> 
+ <div id="particles-js">
+   {% block content %}
+   {% endblock  %}
 
-  {% block content %}
-  {% endblock  %}
+ </div>
 
- <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
- <script src="{% static 'core/js/particles.min.js' %}"></script> <!-- stats.js lib --> 
+
+ <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+ <script src="{% static 'core/js/particles.min.js' %}"></script> <!-- stats.js lib -->
  <script src="{% static 'core/js/web.js'%}"></script>
 
- 
+
 
 </body>
 </html>

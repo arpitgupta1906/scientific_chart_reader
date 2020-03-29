@@ -1,3 +1,10 @@
-{% extends 'index.html' %}
+{% extends 'core/index.html' %}
 {% block content %}
+  <div class="container">
+    <img class='img-responsive' src="{{path}}" alt="not working" />
+    {{labels}}
+    <br>
+    {{readings}}
+    
+  </div>
 {% endblock %}
