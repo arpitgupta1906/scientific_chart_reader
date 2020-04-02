@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
-from .maincode.mainscript import mainfunction
+from .maincode.finaloutput import outputfunction
 from django.views.generic import CreateView,View,TemplateView
 from .models import IMAGE
 from .forms import ImageUploadForm
 from django.urls import reverse_lazy
 import os
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,13 +36,13 @@ class OutputView(View):
         img_patha=img_path
         #to get absolute file path
         img_path=BASE_DIR+img_path
-        output_data=mainfunction(img_path)
-        labels=output_data[0]
-        readings=output_data[1]
+        output_data=outputfunction(img_path)
+        # data=json.loads(output_data)
+        # labels=output_data[0]
+        # readings=output_data[1]
         return render(request,'core/output.html',{
             'path':img_patha,
-            'labels':labels,
-            'readings':readings
+            'outputdata':output_data
             })
 
 
