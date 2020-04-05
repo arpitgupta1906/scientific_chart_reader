@@ -3,7 +3,12 @@
   <div class="container">
     <img class='img-responsive' src="{{path}}" alt="not working" />
     
-    <table class="table">
+    <table id='t01'>
+    <tr>
+    <th>X-axis tittles</th>
+    <th>Values</th> 
+    
+    </tr>
     {% for key,value in outputdata.items %}
 
       <tr>  
