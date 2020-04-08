@@ -1,4 +1,4 @@
-from . import mainscript
+from  . import mainscript
 import json
 
 
@@ -39,8 +39,46 @@ def outputfunction(img_path):
     for i in range(len(datatitles)):
         output[datatitles[i]]=values[i]
 
+    output_latex=table_to_latex(output)
 
-    return output
+    return [output,output_latex]
+
+
+def table_to_latex(output):
+    text_initial="""
+    \\documentclass{article} \n
+
+    \\begin{document} \n
+
+    \\begin{table}[h!] \n
+    \\begin{center} \n
+
+    \\begin{tabular}{l|c|r}  \n
+    \\textbf{X-axis titles} & \\textbf{Values}\\\\  \n
+    \\hline  \n
+        """
+
+    text_middle=""
+    for key,value in output.items():
+         value_text= str(key)+" & "+str(value)+" \\\\ \n"
+         text_middle+value_text
+
+    text_last="""
+        \\end{tabular} \n
+        \\end{center} \n
+        \\end{table} \n
+
+        \\end{document} \n
+        """
+
+    output_text=text_initial+text_middle+text_last
+
+    return output_text
+    
+    # print(output_text)
+
+
 
 if __name__=="__main__":
-    print(outputfunction('image2.png'))
+    print(outputfunction('image2.png'))   
+    # table_to_latex()
