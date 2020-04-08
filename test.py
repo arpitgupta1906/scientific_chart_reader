@@ -1,5 +1,5 @@
-test=r"""
-    \documentclass\{article}
+test="""
+    \\documentclass\{article}
 
 \begin{document}
 
