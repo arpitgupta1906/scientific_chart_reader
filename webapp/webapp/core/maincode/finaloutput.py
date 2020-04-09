@@ -46,29 +46,29 @@ def outputfunction(img_path):
 
 def table_to_latex(output):
     text_initial="""
-    \\documentclass{article} \n
+    \\documentclass{article} 
 
-    \\begin{document} \n
+    \\begin{document} 
 
-    \\begin{table}[h!] \n
-    \\begin{center} \n
+    \\begin{table}[h!] 
+    \\begin{center} 
 
-    \\begin{tabular}{l|c|r}  \n
-    \\textbf{X-axis titles} & \\textbf{Values}\\\\  \n
-    \\hline  \n
+    \\begin{tabular}{l|c|r}  
+    \\textbf{X-axis titles} & \\textbf{Values}\\\\  
+    \\hline  
         """
 
     text_middle=""
     for key,value in output.items():
          value_text= str(key)+" & "+str(value)+" \\\\ \n"
-         text_middle+value_text
+         text_middle=text_middle+"\t"+value_text
 
     text_last="""
-        \\end{tabular} \n
-        \\end{center} \n
-        \\end{table} \n
+    \\end{tabular} 
+    \\end{center} 
+    \\end{table} 
 
-        \\end{document} \n
+    \\end{document} 
         """
 
     output_text=text_initial+text_middle+text_last

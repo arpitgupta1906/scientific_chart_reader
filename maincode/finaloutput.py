@@ -59,9 +59,10 @@ def table_to_latex(output):
         """
 
     text_middle=""
-    for key,value in output.items():
-         value_text= str(key)+" & "+str(value)+" \\\\ \n"
-         text_middle+value_text
+    for key in output:
+        value_text= str(key)+" & "+str(output[key])+" \\\\ \n"
+        # print(value_text)
+        text_middle=text_middle+value_text
 
     text_last="""
         \\end{tabular} \n
