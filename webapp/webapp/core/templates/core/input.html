@@ -12,15 +12,17 @@
         {% csrf_token %}
         {{ form.data }}
         
-        <button type="submit" class="btn btn-primary btn-lg">Upload Image</button>
+        <button type="submit" class="btn btn-primary btn-lg">
+        
+        Upload Image</button>
         
       </form>
     </div>
     <h2>Instructions:</h2>
-    <p id="instructions"> 1.Only image of bar graph will be processed.</br>
-       2.Image should be clear.</br>
+    <p id="instructions"> 1.This app has been developed for reading bar graphs only.</br>
+       2.Image should be as clear as possible for best results.</br>
        3.The data extracted from the graph will be shown in Tabular form.</br>
-       4.You can also use latex script for tabular form of data. 
+       4.A latext script of the tabular data is also available 
       
     </p> 
   
