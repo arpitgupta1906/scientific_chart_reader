@@ -1,15 +1,32 @@
 {% extends 'core/index.html' %}
   {% block content %}
+
     <div class="container">
-     <div class="formtext">
+      <div class="col-sm-12">
+      <div class="inputspecial">
     
+   <h2>Upload the image of bar graph here.</h2>
+   <div class="formtext">
       <form method="POST" enctype="multipart/form-data">
-        
+      
         {% csrf_token %}
         {{ form.data }}
+        
         <button type="submit" class="btn btn-primary btn-lg">Upload Image</button>
+        
       </form>
     </div>
+    <h2>Instructions:</h2>
+    <p id="instructions"> 1.Only image of bar graph will be processed.</br>
+       2.Image should be clear.</br>
+       3.The data extracted from the graph will be shown in Tabular form.</br>
+       4.You can also use latex script for tabular form of data. 
+      
+    </p> 
+  
+  
     </div>
+  </div>
+</div>
 
   {% endblock %}

@@ -1,8 +1,16 @@
 {% extends 'core/index.html' %}
 {% block content %}
   <div class="container">
+    <div class="inputinoutput">
+    <div class="col-sm-6">
     <img class='img-responsive' src="{{path}}" alt="not working" />
-    
+    <div class="outputtext">
+    <p>Input Image</p>
+  </div>
+    </div>
+    </div>
+    <div class="outputtable">
+    <div class="col-sm-6">
     <table id='t01'>
     <tr>
     <th>X-axis tittles</th>
@@ -18,9 +26,39 @@
       </tr>
     {% endfor %}
     </table>
-     <textarea rows=35 cols=100>
+    <br></br>
+    <div class="outputtext">
+      
+    <p>Output Data Table</p>
+  </div>
+    </div>
+    </div>
+    
+
+    
+    <div class="col-sm-12">
+    
+  </div>
+  
+    <div class="latexstyle">
+      <div class="col-sm-12">
+    <div class="latextext">
+      
+      <p>Latex script</p>
+    </div>
+     <textarea id="textarea" rows=35 cols=55>
      {{outputlatex}}
      </textarea>
     
+     <button id="copybutton"style="margin-bottom:10px;" onclick="copy()">Copy to Clipboard</button>
+   
+    </div>
   </div>
+  </div>
+  
+
+  
+
+
+  
 {% endblock %}

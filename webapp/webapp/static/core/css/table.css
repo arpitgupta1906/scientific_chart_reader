@@ -1,5 +1,6 @@
 table {
     width:80%;
+    
   }
   table, th, td {
     border: 1px solid black;
@@ -18,4 +19,5 @@ table {
   table#t01 th {
     background-color: #1e1a27;
     color: white;
+  
   }
