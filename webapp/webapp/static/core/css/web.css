@@ -39,7 +39,9 @@ input[type=file]{
     }
     
 .inputspecial{
-    padding-top: 10px;
+    padding-top: 20px;
+   
+   
 
 
 }    
@@ -49,11 +51,14 @@ input[type=file]{
 
 .inputinoutput{
    width:100%;
-   padding-top: 10px;
+   padding-top: 50px;
    text-align: center;
    display: block;
   margin-left: auto;
   margin-right: auto;
+  
+    bottom: 0;
+  
   
  
 }
@@ -64,17 +69,21 @@ input[type=file]{
 
 .outputtable{
     width:100%;
-    padding-top: 35px;
+    padding-top: 0px;
    text-align: center;
     display: block;
-  
+    margin-left: auto;
+    margin-right: auto;
+  height: 50px;
   align-content: center;
+  
 
   
 }
 
 .outputtext{
     font-size:20px;
+    text-align:center;
 }
 
 .inputtext{
@@ -105,12 +114,13 @@ textarea {
     margin: 10px;
     overflow: auto;
     padding: 7px 10px;
-    width: 300px;    
+    width: 90%;    
     font-family: tahoma;
     font-size: 13px;
     border: 1px solid #44446e;
-    width:100%;
-   text-align:auto;
+    padding-left: 1cm;
+    
+   
    
     
 }
@@ -133,12 +143,23 @@ textarea {
     
     text-align: center;
     position: absolute;
-    bottom: 0;
+    
     width: 100%;
     color: black;
     font-size: 15px;
+    bottom: 0em;
   }
 
   /* #id_data{
     display:none;
   } */
+
+
+  #output{
+      align-items: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      
+  }
+
