@@ -10,18 +10,21 @@ def extractdata(image_path):
     text1,text2=textdetector.graphtextdetextor(image_path)
     data1=text1.strip().split('\n')
     data2=text2.strip().split('\n')
-
+    
+    # print(data1)
+    
     y_axis_title=data2[0]
     y_axis_list=[]
     k=[]
 
     for i in data1:
-        if i.isdigit():
-            y_axis_list.append(i)
-        else:
-            k.append(i)
+        for d in i.split(" "):
+            if d.isdigit():
+                y_axis_list.append(d)
+            else:
+                k.append(d)
 
-    x_axis_title=k[-1]
+    x_axis_title=data2[-1]
     k=k[1:-1]
 
     graph_title=data1[0]
@@ -46,6 +49,7 @@ def extractdata(image_path):
 
     ydata=[]
     i=0
+
     while True:
         o=int(y_axis_list[0])-i*maxnumber
         if o>0:
@@ -55,6 +59,8 @@ def extractdata(image_path):
         if o<=0:
             break
         i=i+1
+
+
     if graph_title==str(ydata[0]):
         graph_title=""
 
@@ -82,6 +88,6 @@ def extractdata(image_path):
 
 
 if __name__=='__main__':
-    image_path='1.png'
+    image_path='7.jpg'
     a=extractdata(image_path)
     print(a)
