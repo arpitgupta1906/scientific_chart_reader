@@ -14,7 +14,6 @@ def graphtextdetextor(image_path):
 
     #img=image_filter.rotate_anticlockwise(img)
 
-
     custom_config_number=r'--oem 3 --psm 6 outputbase digits'
     custom_config=r'--oem 3 --psm 6'
 
@@ -22,15 +21,17 @@ def graphtextdetextor(image_path):
 
     custom_config2=r'--oem 3 --psm 4'
 
-    text=pytesseract.image_to_string(img,config=custom_config)
     text2=pytesseract.image_to_string(img,config=custom_config1)
+    
+    img=img[:,:max(80,img.shape[1]//5)]
+    text=pytesseract.image_to_string(img,config=custom_config)
     #text3=pytesseract.image_to_string(img,config=custom_config2)
 
 
 
     d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
-    #print(text3)
+    # print(text)
     return [text,text2]
 
 
@@ -52,5 +53,5 @@ def graphtextdetextor(image_path):
 if "__main__"== __name__:
     image_path='image2.png'
     d=graphtextdetextor(image_path)
-    print(d[3])
+    print(d)
     
