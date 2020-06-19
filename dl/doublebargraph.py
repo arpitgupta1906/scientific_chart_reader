@@ -23,9 +23,10 @@ color1=["red","yellow","pink"]
 color2=["blue","green","brown"]
 label1=["local","overseas","sale","profit"]
 label2=["profit","loss","price","value"]
-os.mkdir("Doublebargraphfordl")
 
-numberOfGraphs=1000
+os.mkdir("Doublebargraphfordl2")
+
+numberOfGraphs=4000
 plt.figure(figsize=(10,6))
 for i in range(numberOfGraphs):
     xx=random.choice(x_axis_dataset)
@@ -55,7 +56,7 @@ for i in range(numberOfGraphs):
     plt.legend()
     k=str(i+1)
     var="image"+k+".png"
-    image_filepath=os.path.join("Doublebargraphfordl/",var)
+    image_filepath=os.path.join("Doublebargraphfordl2/",var)
     # Show graphic
     plt.savefig(image_filepath)
     plt.cla()

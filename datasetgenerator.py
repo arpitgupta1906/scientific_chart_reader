@@ -20,9 +20,9 @@ x_axis_dataset=[['yellow','blue','red','green'],
             ]
 
 
-os.mkdir("Datasetfordl")
+os.mkdir("Datasetfordl2")
 
-numberOfGraphs=2
+numberOfGraphs=4000
 
 plt.figure(figsize=(10,6))
 plt.xlabel("X-Axis")
@@ -57,8 +57,8 @@ for i in range(numberOfGraphs):
     plt.draw()
     # plt.show()
 
-    var="image"+k+".png"
-    image_filepath=os.path.join("Datasetfordl/",var)
+    var="bar"+k+".png"
+    image_filepath=os.path.join("Datasetfordl2/",var)
 
     # var='table'+k+'.csv'
     # table_filepath=os.path.join(filepath,var)
