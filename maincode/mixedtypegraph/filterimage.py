@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-
+from sklearn.cluster import MiniBatchKMeans
 
 def obtainbars(img):
     """
@@ -13,7 +13,14 @@ def obtainbars(img):
     # Thresholding the image
     (thresh, img_bin) = cv2.threshold(img, 240, 255,0)
     # Invert the image
+    
+    # img_bin=img
+    # img_bin=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    
     img_bin = 255-img_bin 
+
+    # plt.imshow(img)
+    # plt.show()
 
     # Defining a kernel length
     kernel_length = np.array(img).shape[1]//80
@@ -35,9 +42,9 @@ def obtainbars(img):
 if __name__=="__main__":
     # Read the image
     # img = cv2.imread('1.png', 0)
-    img=cv2.imread('test.png',0)
+    img=cv2.imread('test2.jpg',0)
     horizontal_lines_img=obtainbars(img)
-    # cv2.imwrite("test.png",horizontal_lines_img)
+    # cv2.imwrite("test_filtered.png",horizontal_lines_img)
     plt.imshow(horizontal_lines_img,cmap="gray")
     plt.show()
 
