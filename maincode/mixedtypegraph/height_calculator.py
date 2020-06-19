@@ -1,17 +1,14 @@
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-# from statistics import mode 
-
+from statistics import median
+from math import ceil
 
 # background_color=255
 
 def xaxiscoordinate(image):
     
     h,w=image.shape
-
-    # l=[image[10,10],image[20,40],image[h-20,20]]
-    # background_color=mode(l)
 
     flag=0
     for y in range(h-1,0,-1):
@@ -60,7 +57,14 @@ def heightcalculator(image):
             xinitial=x
             y=yinitial
 
-    return [bar_heights,bar_coordinates]
+    diff=[]
+    for bar in bar_coordinates:
+        diff.append(ceil(bar[1]-bar[0]))
+    
+    diff.sort()
+    width=median(diff)
+
+    return [xy,bar_heights,bar_coordinates,width]
 
 if __name__ == "__main__":
     image_path="test_filtered.png"
