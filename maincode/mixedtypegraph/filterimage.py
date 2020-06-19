@@ -19,7 +19,7 @@ def obtainbars(img):
     
     img_bin = 255-img_bin 
 
-    # plt.imshow(img_bin,cmap="gray")
+    # plt.imshow(img)
     # plt.show()
 
     # Defining a kernel length
@@ -42,9 +42,9 @@ def obtainbars(img):
 if __name__=="__main__":
     # Read the image
     # img = cv2.imread('1.png', 0)
-    img=cv2.imread('test.png',0)
+    img=cv2.imread('test2.jpg',0)
     horizontal_lines_img=obtainbars(img)
-    cv2.imwrite("test_filtered.png",horizontal_lines_img)
+    # cv2.imwrite("test_filtered.png",horizontal_lines_img)
     plt.imshow(horizontal_lines_img,cmap="gray")
     plt.show()
 
