@@ -17,12 +17,23 @@ def extractdata(image_path):
     y_axis_list=[]
     k=[]
 
+
+
     for i in data1:
         for d in i.split(" "):
+            # try:
+            #     float(d)
+            #     y_axis_list.append(d)
+            # except:
+            #     k.append(d)
             if d.isdigit():
                 y_axis_list.append(d)
             else:
                 k.append(d)
+
+    # print(y_axis_list)
+    if y_axis_list[-1]!=0:
+        y_axis_list.append(0)
 
     x_axis_title=data2[-1]
     k=k[1:-1]
