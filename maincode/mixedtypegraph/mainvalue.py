@@ -123,5 +123,5 @@ def mainfunction(img_path):
     return [data['datatitles'],bar_readings]
 
 if __name__ == "__main__":
-    img_path='image4.png'
+    img_path='test.png'
     mainfunction(img_path)
