@@ -45,6 +45,9 @@ def barlabelandheightratio(img,yaxisminimum=0):
 
     unit_data.sort()
     k=len(unit_data)
+    
+    # print(numberlist)
+
     height_ratio=unit_data[k//2]
     # print(data)
 
