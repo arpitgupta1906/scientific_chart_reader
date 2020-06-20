@@ -61,6 +61,8 @@ def extractdata(image_path):
     ydata=[]
     i=0
 
+    print(freq)
+
     while True:
         o=int(y_axis_list[0])-i*maxnumber
         if o>0:
