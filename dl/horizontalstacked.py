@@ -25,10 +25,10 @@ color1=["red","#7f6d5f","pink"]
 color2=["blue","green","#557f2d"]
 color3=["#2d7f5e","brown","orange"]
 
-os.mkdir("stacked4000")
+#os.mkdir("horizontalstacked")
 
 numberOfGraphs=4000
-plt.figure(figsize=(10,6))
+
 
 for i in range(numberOfGraphs):
     names=random.choice(x_axis_dataset)
@@ -46,7 +46,7 @@ for i in range(numberOfGraphs):
 
 
 
-    rc('font')
+  
     # Heights of bars1 + bars2
     bars = np.add(bars1, bars2).tolist()
  
@@ -55,21 +55,21 @@ for i in range(numberOfGraphs):
  
     # Names of group and bar width
 
-    barWidth = 0.4
+
     # Create brown bars
-    plt.bar(r, bars1, color=random.choice(color1), width=barWidth)
+    plt.barh(r, bars1, color=random.choice(color1))
     # Create green bars (middle), on top of the firs ones
-    plt.bar(r, bars2, bottom=bars1, color=random.choice(color2), width=barWidth)
+    plt.barh(r, bars2, left=bars1, color=random.choice(color2))
     # Create green bars (top)
-    plt.bar(r, bars3, bottom=bars, color=random.choice(color3), width=barWidth)
+    plt.barh(r, bars3, left=bars, color=random.choice(color3))
  
     # Custom X axis
-    plt.xticks(r, names, fontweight='bold')
-    plt.xlabel("groups")
-    plt.ylabel('values')
+    plt.yticks(r,names)
+    plt.xlabel("values")
+    plt.ylabel('groups')
     k=str(i+1)
-    var="image"+k+".png"
-    image_filepath=os.path.join("stacked4000/",var)
+    var="hs"+k+".png"
+    image_filepath=os.path.join("horizontalstacked/",var)
     # Show graphic
     plt.savefig(image_filepath)
     plt.cla()
