@@ -34,7 +34,7 @@ def graphtextdetextor(image_path):
 
 
 
-    d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
+    # d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
     # print(text)
     return [text,text2]
@@ -56,7 +56,7 @@ def graphtextdetextor(image_path):
 
 
 if "__main__"== __name__:
-    image_path='test3.jpg'
+    image_path='case2.png'
     d=graphtextdetextor(image_path)
     print(d)
     
