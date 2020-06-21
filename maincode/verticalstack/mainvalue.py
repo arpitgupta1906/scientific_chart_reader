@@ -2,26 +2,25 @@ import cv2
 import filterimage
 import height_calculator
 import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import matplotlib.pyplot as plt
+from math import ceil
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import extracted_data
-import textposition
+from text_vertical_graph import text_position
 
 def mainfunction(img_path):
     img=cv2.imread(img_path)
     img_gray=cv2.imread(img_path,0)
 
-    (data,rangeratio)=extracted_data.extractdata(img_path)
-
     only_bars=filterimage.obtainbars(img_gray)
-    (yaxisminimum,heights,bar_position)=height_calculator.heightcalculation(only_bars)
+    (yaxismaximum,xaxismaximum,heights,bar_position)=height_calculator.heightcalculation(only_bars)
+    (ratio,bartitle,barlocation2)=text_position.barlabelandheightratio(img,xaxismaximum,yaxismaximum)
 
-    (heightratio,bartitle,barlocation2)=textposition.barlabelandheightratio(img,yaxisminimum)
 
-    mx_index=0
+    data={}
     data['datatitles']=bartitle
-    
+    mx_index=0
+
     for i in range(1,len(heights)):
         if len(heights[i])>len(heights[mx_index]):
             mx_index=i
@@ -37,20 +36,19 @@ def mainfunction(img_path):
     new_heights=[]
 
     for i in range(len(barlocation2)):
-        if(abs(barlocation2[i]-bar_position[j])<30):
+        if abs(barlocation2[i]-bar_position[j])<30:
             if len(heights[j])<mx:
                 temp=[]
 
                 pos=0
-                
+
                 for k in range(mx):
                     if abs(heights[j][pos][0]-colors[k])<10:
                         temp.append(heights[j][pos][1])
-                        pos+=1
                     else:
                         temp.append(0)
-
                 new_heights.append(temp)
+
             else:
                 temp=[]
                 for bar in heights[j]:
@@ -70,18 +68,18 @@ def mainfunction(img_path):
     for bar in new_heights:
         temp=[]
         for i in bar:
-            readingofabar=rangeratio*i//heightratio
+            readingofabar=ceil(i*ratio)
             temp.append(readingofabar)
         
         bar_readings.append(temp)
 
-
-    print('------------')
-    print(bar_readings)
-    print('------------')
-    print(data)
+    # print('----------------')
+    # print(bar_readings)
+    # print('----------------')
+    # print(data)
 
     return [data['datatitles'],bar_readings]
+
 if __name__ == "__main__":
-    img_path="stack3.png"
-    mainfunction(img_path)
+    img_path="case3.png"
+    print(mainfunction(img_path))
