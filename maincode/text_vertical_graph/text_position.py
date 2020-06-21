@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 ##remove special characters
-
+##yaxismax=last y coordinate of the bar
 def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
 
     y=img.shape[0]-yaxismaximum
@@ -35,7 +35,7 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
         if xaverage1>xaxismaximum:
             
             label=""
-            while xaverage1>x and i<len(l)-1:
+            while xaverage1>xaxismaximum and i<len(l)-1:
                 i+=1
                 xaverage1=((int(l[i][1])+int(l[i][3]))/2)
 
@@ -100,6 +100,8 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
         while pos<len(l)-1 and (not l[pos][0].isdigit()):
             pos+=1 
 
+        if pos>=len(l)-1:
+            break
         temp=""
         xaverage1=((int(l[pos][1])+int(l[pos][3]))/2)
         xaverage2=((int(l[pos+1][1])+int(l[pos+1][3]))/2)
@@ -138,12 +140,12 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
         
         pos+=1
 
-
+    print(bar_readings)
     # for i in matrix:
     #     print(i)
     # print(bar_labels,bar_positions)
     # print(bar_diff,bar_readings)
-
+    
     diff_xaxis=[]
 
     for d in range(len(bar_diff)-1):
@@ -152,7 +154,7 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
 
     diff_xaxis.sort()
     k=len(diff_xaxis)
-
+    
     height_ratio=diff_xaxis[k//2]
 
     diff=[]
@@ -172,24 +174,24 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
             max=value 
             maxnumber=key
 
-    ratio=maxnumber//height_ratio
+    ratio=maxnumber/height_ratio
 
     # print(maxnumber)
     mark=0
     initial=img.shape[0]-initial
 
-    while bar_positions[mark]<initial-10:
+    while mark<len(bar_positions) and bar_positions[mark]<initial-10:
         mark+=1
 
     return [ratio,bar_labels[:mark],bar_positions[:mark]]
 
 if __name__ == "__main__":
-    img_path='case2.png'
+    img_path='case3.png'
     img=cv2.imread(img_path)
     x=113
     y=562
-    print(barlabelandheightratio(img,x,y))
+    print(barlabelandheightratio(img,100,302))
 
     # print(d)
-    # plt.imshow(img)
-    # plt.show()
+    plt.imshow(img)
+    plt.show()

@@ -8,15 +8,16 @@ def axiscoordinate(image):
     h,w=image.shape[:2]
     flag=0
 
-    for y in range(h-10):
-        for x in range(0,w*2//3,5):
+    for x in range(0,w*2//3,5):
+        for y in range(h-10):
             flag=1
-            for i in range(5):
+            for i in range(3):
                 if image[y,x+i]==BACKGROUND_COLOR:
                     flag=0
                     break
             if flag==1:
                 return [y,x]
+
 
 def heightcalculation(image):
     h,w=image.shape
@@ -27,6 +28,7 @@ def heightcalculation(image):
     height=[]
     barlocation=[]
     x+=2
+    yend=xy
 
     while y<h-30:
 
@@ -44,6 +46,7 @@ def heightcalculation(image):
         xmid=x
         ymid=(yinitial+(y-2))//2
         color=int(image[ymid,xmid])
+        
 
         temp=[]
         while image[ymid,xmid]!=BACKGROUND_COLOR and xmid<w-30:
@@ -58,16 +61,18 @@ def heightcalculation(image):
             color=int(image[ymid,xmid])
 
         if flag==1:
+            yend=y
             height.append(temp)
             barlocation.append(ymid)
 
-    return [xy,xx,height,barlocation]
+
+    return [yend,xx,height,barlocation]
 
 
 if __name__ == "__main__":
     image_path="test_filtered.png"
     image=cv2.imread(image_path,0)
-
+    print(axiscoordinate(image))
     print(heightcalculation(image))
     plt.imshow(image,cmap="gray")
     plt.show()
