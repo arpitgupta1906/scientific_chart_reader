@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 from pytesseract import Output
 from PIL import Image
-
+import matplotlib.pyplot as plt
 
 
 
@@ -23,13 +23,18 @@ def graphtextdetextor(image_path):
 
     text2=pytesseract.image_to_string(img,config=custom_config1)
     
-    img=img[:,:max(80,img.shape[1]//5)]
+    img=img[:,:max(100,img.shape[1]//2)]
+
+    # plt.imshow(img)
+    # plt.show()
+
+    # print(img.shape[1]//5)
     text=pytesseract.image_to_string(img,config=custom_config)
     #text3=pytesseract.image_to_string(img,config=custom_config2)
 
 
 
-    d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
+    # d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
     # print(text)
     return [text,text2]
@@ -51,7 +56,7 @@ def graphtextdetextor(image_path):
 
 
 if "__main__"== __name__:
-    image_path='image2.png'
+    image_path='vertical_mixed/case1.png'
     d=graphtextdetextor(image_path)
     print(d)
     
