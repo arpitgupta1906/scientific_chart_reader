@@ -85,7 +85,7 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
         i+=1
 
      #####calculate ranges and height/pixel ratio
-
+    print(bar_labels)
     pos=0
     while pos<len(l) and (int(l[pos][3])<xaxismaximum or int(l[pos][4])>=y):
         pos+=1
@@ -147,7 +147,7 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
     # print(bar_diff,bar_readings)
     
     diff_xaxis=[]
-
+    bar_diff.sort()
     for d in range(len(bar_diff)-1):
         if bar_diff[d+1]-bar_diff[d]>0:
             diff_xaxis.append(bar_diff[d+1]-bar_diff[d])
@@ -182,16 +182,16 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
 
     while mark<len(bar_positions) and bar_positions[mark]<initial-10:
         mark+=1
-
+    
     return [ratio,bar_labels[:mark],bar_positions[:mark]]
 
 if __name__ == "__main__":
-    img_path='case3.png'
+    img_path='mixed.jpg'
     img=cv2.imread(img_path)
     x=113
     y=562
-    print(barlabelandheightratio(img,100,302))
-
-    # print(d)
     plt.imshow(img)
     plt.show()
+    print(barlabelandheightratio(img,164,247))
+
+    # print(d)
