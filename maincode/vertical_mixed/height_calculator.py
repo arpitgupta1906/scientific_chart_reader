@@ -4,69 +4,69 @@ import numpy as np
 from statistics import median
 from math import ceil
 
-def axiscoordinate(image):
-    h,w=image.shape[:2]
-    flag=0
+# background_color=255
 
-    for x in range(0,w*2//3,5):
-        for y in range(h-10):
+def xaxiscoordinate(image):
+    
+    h,w=image.shape
+
+    flag=0
+    for y in range(h-1,0,-1):
+        for x in range(0,w*2//3,5):
             flag=1
-            for i in range(3):
-                if image[y,x+i]==255:
+            for i in range(5):
+                if image[y,x+i]!=0:
                     flag=0
                     break
             if flag==1:
-                return [y,x]
+                return [y,x] 
+
 
 def heightcalculator(image):
 
-    h,w=image.shape[:2]
+    h,w=image.shape
 
-    xy,xx=axiscoordinate(image)
+    xy,xx=xaxiscoordinate(image)
 
     y=yinitial=xy 
-    x=xinitial=xx
+    x=xinitial=(xx+3)
     bar_coordinates=[]
     bar_heights=[]
-    initial_pos=0
 
-    while y<h-20:
-        while image[y,x]!=0 and y<h-20:
-            y+=1
+    while x<w-25:
 
-        yinitial=y
-        flag=0
-
-        while image[y,x]==0 and x<w-30:
+        while image[y,x]!=0 and x<w-10:
             x+=1
+
+        xinitial=x
+
+        flag=0
+        
+        while image[y,x]==0 and y>30:
+            y-=1
             flag=1
+        
+        y+=5
 
-        x-=2
-
-        while flag==1 and image[y,x]==0 and image[y,x+4]!=0 and image[y,x-4]==0 and y<h-20:
-            y+=1
+        while flag==1 and image[y,x]==0 and image[y-10,x]!=0 and image[y+10,x]==0 and x<w-10:
+            x+=1 
 
         if flag==1:
-            bar_heights.append(abs(xinitial-(x+2)))
-            bar_coordinates.append([yinitial,y])
-            x=xinitial
-            yinitial=y
-            initial_pos=y
+            bar_heights.append(yinitial-y+5)
+            bar_coordinates.append([xinitial,x])
+            xinitial=x
+            y=yinitial
 
     diff=[]
     for bar in bar_coordinates:
         diff.append(ceil(bar[1]-bar[0]))
-
+    
     diff.sort()
     width=median(diff)
 
-    return [initial_pos,xx,bar_heights,bar_coordinates,width]
-
+    return [xy,bar_heights,bar_coordinates,width]
 
 if __name__ == "__main__":
     image_path="test_filtered.png"
     image=cv2.imread(image_path,0)
-    # print(axiscoordinate(image))
-    plt.imshow(image,cmap="gray")
-    plt.show()
     print(heightcalculator(image))

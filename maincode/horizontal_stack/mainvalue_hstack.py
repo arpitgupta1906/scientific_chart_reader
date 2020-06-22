@@ -1,11 +1,11 @@
 import cv2
-import filterimage
-import height_calculator
 import os, sys
 import matplotlib.pyplot as plt
 from math import ceil
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from horizontal_stack import filterimage
+from horizontal_stack import height_calculator
 from text_vertical_graph import text_position
 
 def mainfunction(img_path):

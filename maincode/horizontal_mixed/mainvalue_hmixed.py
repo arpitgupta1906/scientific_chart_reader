@@ -1,31 +1,27 @@
 import cv2
-import filterimage
-import height_calculator
 import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import matplotlib.pyplot as plt
+from math import ceil
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import extracted_data
-import textposition
-
+from horizontal_mixed import filterimage
+from horizontal_mixed import height_calculator
+from text_vertical_graph import text_position
 
 def mainfunction(img_path):
-
     img=cv2.imread(img_path)
     img_gray=cv2.imread(img_path,0)
 
-    (data,rangeratio)=extracted_data.extractdata(img_path)
-
     only_bars=filterimage.obtainbars(img_gray)
+    (yaxismaximum,xaxismaximum,heights,bar_position,diff)=height_calculator.heightcalculator(only_bars)
+    (ratio,bartitle,barlocation2)=text_position.barlabelandheightratio(img,xaxismaximum,yaxismaximum)
 
-    (yaxisminimum,heights,bar_position,diff)=height_calculator.heightcalculator(only_bars)
+    data={}
+    data['datatitles']=bartitle
     
-    (heightratio,bartitle,barlocation2)=textposition.barlabelandheightratio(img,yaxisminimum)
     i=0
     j=0
     main_heights=[]
-
-    data['datatitles']=bartitle
 
     while i<len(heights) and j<len(bartitle):
         d=bar_position[i][0]
@@ -38,7 +34,6 @@ def mainfunction(img_path):
                 l.append(heights[i])
                 i+=1
 
-           
             main_heights.append(l)
             j+=1
 
@@ -50,8 +45,7 @@ def mainfunction(img_path):
         j+=1
         main_heights.append([0])
 
-        # check for zeros by checking l and removing extras by decreasing values of i
-
+    ###############
     final_heights=[]
     mx=0
     count=0
@@ -73,7 +67,6 @@ def mainfunction(img_path):
             elif prev-bar_position[count-1][1]<=diff+4:
                 temp.append(0)
                 prev=prev+diff
-                
 
         mx=max(len(temp),mx)
         final_heights.append(temp)
@@ -89,39 +82,20 @@ def mainfunction(img_path):
     for bar in final_heights:
         temp=[]
         for var in bar:
-            readingofabar=rangeratio*var//heightratio
+            readingofabar=ceil(var*ratio)
             maxreading=max(maxreading,readingofabar)
             temp.append(readingofabar)
         bar_readings.append(temp)
 
-    if maxreading>data['Yaxis_plotdata'][0]+30:
-        bar_readings=[]
-        heightratio*=2
 
-        for bar in final_heights:
-            temp=[]
-            for var in bar:
-                readingofabar=rangeratio*var//heightratio
-                temp.append(readingofabar)
-            bar_readings.append(temp)
-
-    print(bar_readings)
-    print('-----------------')
-    # print(final_heights)
-    # print('-----------------')
-    # print([data,rangeratio])
-    # print('-----------------')
-    # print(heightratio)
-    # print('-----------------')
-    # print(heights)
-    # print('-----------------')
-    # print([bartitle,barlocation2])
-
-    # plt.imshow(img)
-    # plt.show()
+    # print(bar_readings)
+    # print('----------------')
+    # print(data['datatitles'])
 
     return [data['datatitles'],bar_readings]
 
+
+
 if __name__ == "__main__":
-    img_path='test.png'
-    mainfunction(img_path)
+    img_path="please2.png"
+    print(mainfunction(img_path))
