@@ -1,10 +1,10 @@
 import cv2
-import filterimage
-import height_calculator
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import matplotlib.pyplot as plt
 
+from vertical_mixed import filterimage
+from vertical_mixed import height_calculator
 import extracted_data
 import textposition
 

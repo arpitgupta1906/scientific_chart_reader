@@ -1,10 +1,10 @@
 import cv2
-import filterimage
-import height_calculator
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import matplotlib.pyplot as plt
 
+from vertical_stack import filterimage
+from vertical_stack import height_calculator
 import extracted_data
 import textposition
 
@@ -83,5 +83,6 @@ def mainfunction(img_path):
 
     return [data['datatitles'],bar_readings]
 if __name__ == "__main__":
-    img_path="stack3.png"
+    # img_path="stack3.png"
+    img_path="please.png"
     mainfunction(img_path)
