@@ -97,5 +97,5 @@ def mainfunction(img_path):
 
 
 if __name__ == "__main__":
-    img_path="case2.png"
+    img_path="please2.png"
     print(mainfunction(img_path))

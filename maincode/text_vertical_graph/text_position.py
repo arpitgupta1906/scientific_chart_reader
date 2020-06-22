@@ -180,18 +180,19 @@ def barlabelandheightratio(img,xaxismaximum=0,yaxismaximum=0):
     mark=0
     initial=img.shape[0]-initial
 
-    while mark<len(bar_positions) and bar_positions[mark]<initial-10:
+    # while mark<len(bar_positions) and bar_positions[mark]<initial-10:
+    while mark<len(bar_positions) and bar_positions[mark]<yaxismaximum:
         mark+=1
     
     return [ratio,bar_labels[:mark],bar_positions[:mark]]
 
 if __name__ == "__main__":
-    img_path='mixed.jpg'
+    img_path='case2.png'
     img=cv2.imread(img_path)
     x=113
     y=562
     plt.imshow(img)
     plt.show()
-    print(barlabelandheightratio(img,164,247))
+    print(barlabelandheightratio(img,x,y))
 
     # print(d)
