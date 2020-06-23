@@ -13,7 +13,7 @@ def classify(img_path):
     A deep learning classifier to classify the type of graph
     """    
 
-    return 1
+    return 0
 
 def outputfunction(img_path):
     """
