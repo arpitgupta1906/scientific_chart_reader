@@ -15,8 +15,6 @@ def obtainbars(img):
     # Invert the image
     img_bin = 255-img_bin 
 
-    
-
     # Defining a kernel length
     kernel_length = np.array(img).shape[1]//80
     
@@ -37,9 +35,9 @@ def obtainbars(img):
 if __name__=="__main__":
     # Read the image
     # img = cv2.imread('1.png', 0)
-    img=cv2.imread('girlfriends.png',0)
+    img=cv2.imread('test.png',0)
     horizontal_lines_img=obtainbars(img)
-    cv2.imwrite("test.png",horizontal_lines_img)
+    # cv2.imwrite("test.png",horizontal_lines_img)
     plt.imshow(horizontal_lines_img,cmap="gray")
     plt.show()
 

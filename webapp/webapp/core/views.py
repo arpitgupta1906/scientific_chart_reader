@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
-from .maincode.finaloutput import outputfunction
+# from .maincode.finaloutput import outputfunction
+from .maincode.outputfile import outputfunction
 from django.views.generic import CreateView,View,TemplateView
 from .models import IMAGE
 from .forms import ImageUploadForm
@@ -29,17 +30,33 @@ class ImageInputView(CreateView):
 
 
 class OutputView(View):
+    # def get(self,request):
+    #     img=IMAGE.objects.order_by('-pk')[0]
+    #     img_path=img.data.url
+
+    #     img_patha=img_path
+    #     #to get absolute file path
+    #     img_path=BASE_DIR+img_path
+    #     output_data=outputfunction(img_path)
+    #     # data=json.loads(output_data)
+    #     # labels=output_data[0]
+    #     # readings=output_data[1]
+    #     return render(request,'core/output.html',{
+    #         'path':img_patha,
+    #         'outputdata':output_data[0],
+    #         'outputlatex':output_data[1]
+    #         })
+
     def get(self,request):
+        
         img=IMAGE.objects.order_by('-pk')[0]
         img_path=img.data.url
 
         img_patha=img_path
-        #to get absolute file path
+
         img_path=BASE_DIR+img_path
         output_data=outputfunction(img_path)
-        # data=json.loads(output_data)
-        # labels=output_data[0]
-        # readings=output_data[1]
+
         return render(request,'core/output.html',{
             'path':img_patha,
             'outputdata':output_data[0],
