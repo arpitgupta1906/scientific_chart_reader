@@ -13,15 +13,15 @@ def classify(img_path):
     A deep learning classifier to classify the type of graph
     """    
 
-    return 0
+    return 1
 
 def outputfunction(img_path):
     """
     returns the readings of the bar graph 
     """
 
-    # graph_id=classify(img_path)
-    graph_id=0
+    graph_id=classify(img_path)
+    # graph_id=0
 
     result=[]
 
@@ -108,5 +108,5 @@ def table_to_latex(output,columns):
 
 if __name__ == "__main__":
     # print(table_to_latex({"first":[1,2],"second":[2,3]},2))
-    print(outputfunction('image2.png'))
+    print(outputfunction('image1.png'))
     print("works")

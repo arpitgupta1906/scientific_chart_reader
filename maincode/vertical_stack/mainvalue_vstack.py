@@ -35,7 +35,7 @@ def mainfunction(img_path):
 
     j=0
     new_heights=[]
-
+    print(heights)
     for i in range(len(barlocation2)):
         if(abs(barlocation2[i]-bar_position[j])<30):
             if len(heights[j])<mx:
@@ -44,9 +44,10 @@ def mainfunction(img_path):
                 pos=0
                 
                 for k in range(mx):
-                    if abs(heights[j][pos][0]-colors[k])<10:
+                    if pos<len(heights[j]) and abs(heights[j][pos][0]-colors[k])<10:
                         temp.append(heights[j][pos][1])
                         pos+=1
+                        
                     else:
                         temp.append(0)
 
