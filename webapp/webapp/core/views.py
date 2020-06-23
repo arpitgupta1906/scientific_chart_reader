@@ -60,7 +60,8 @@ class OutputView(View):
         return render(request,'core/output.html',{
             'path':img_patha,
             'outputdata':output_data[0],
-            'outputlatex':output_data[1]
+            'outputlatex':output_data[1],
+            'columns':output_data[2]
             })
 
 

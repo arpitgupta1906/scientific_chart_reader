@@ -35,7 +35,7 @@ def mainfunction(img_path):
 
     j=0
     new_heights=[]
-    print(heights)
+    # print(heights)
     for i in range(len(barlocation2)):
         if(abs(barlocation2[i]-bar_position[j])<30):
             if len(heights[j])<mx:
@@ -77,10 +77,10 @@ def mainfunction(img_path):
         bar_readings.append(temp)
 
 
-    print('------------')
-    print(bar_readings)
-    print('------------')
-    print(data)
+    # print('------------')
+    # print(bar_readings)
+    # print('------------')
+    # print(data)
 
     return [data['datatitles'],bar_readings]
 if __name__ == "__main__":

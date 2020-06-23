@@ -13,7 +13,7 @@ def classify(img_path):
     A deep learning classifier to classify the type of graph
     """    
 
-    return 0
+    return 1
 
 def outputfunction(img_path):
     """
@@ -54,7 +54,7 @@ def outputfunction(img_path):
 
     output_latex=table_to_latex(output,len(values[0]))
 
-    return [output,output_latex]
+    return [output,output_latex,len(values[0])]
 
 def table_to_latex(output,columns):
     text_initial="""
@@ -86,7 +86,7 @@ def table_to_latex(output,columns):
     text_middle=""
 
     for key in output:
-        value_text=str(key)
+        value_text="    "+str(key)
         for i in range(len(output[key])):
             value_text+=" & "+str(output[key][i])
         value_text+=" \\\\ \n"

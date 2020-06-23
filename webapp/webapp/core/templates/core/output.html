@@ -20,7 +20,7 @@
     <table id='t01'>
     <tr>
     <th>X-axis tittles</th>
-    <th>Values</th> 
+    <th colspan={{columns}}>Values</th> 
     
     </tr>
     {% for key,value in outputdata.items %}
@@ -28,7 +28,9 @@
       <tr>  
     
         <td> {{key}}</td>
-        <td> {{value}}</td>
+        {% for i in value %}
+        <td> {{i}}</td>
+        {% endfor %}
       </tr>
     {% endfor %}
     </table>

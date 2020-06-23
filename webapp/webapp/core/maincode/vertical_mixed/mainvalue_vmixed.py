@@ -105,8 +105,8 @@ def mainfunction(img_path):
                 temp.append(readingofabar)
             bar_readings.append(temp)
 
-    print(bar_readings)
-    print('-----------------')
+    # print(bar_readings)
+    # print('-----------------')
     # print(final_heights)
     # print('-----------------')
     # print([data,rangeratio])
