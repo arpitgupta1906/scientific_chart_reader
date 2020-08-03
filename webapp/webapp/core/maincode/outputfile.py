@@ -5,15 +5,15 @@ from .vertical_mixed import mainvalue_vmixed
 from vertical_stack import mainvalue_vstack
 from horizontal_mixed import mainvalue_hmixed
 from horizontal_stack import mainvalue_hstack
+from deep_learning_predictor import classifier
 
 
-##not connected
 def classify(img_path):
     """
     A deep learning classifier to classify the type of graph
     """    
-
-    return 1
+    return classifier(img_path)
+    # return 1
 
 def outputfunction(img_path):
     """
@@ -27,22 +27,22 @@ def outputfunction(img_path):
 
     #if it is a single or mixed vertical bar graph
 
-    if graph_id==0:
+    if graph_id==2:
         result=mainvalue_vmixed.mainfunction(img_path)
 
     #if it is a stacked vertical bar graph
 
-    elif graph_id==1:
+    elif graph_id==0:
         result=mainvalue_vstack.mainfunction(img_path)
 
     #if it is a single or mixed horizontal bar graph
 
-    elif graph_id==2:
+    elif graph_id==3:
         result=mainvalue_hmixed.mainfunction(img_path)
 
     #if it is a stacked horizontal bar graph
 
-    elif graph_id==3:
+    elif graph_id==1:
         result=mainvalue_hstack.mainfunction(img_path)
 
     datatitles=result[0]
