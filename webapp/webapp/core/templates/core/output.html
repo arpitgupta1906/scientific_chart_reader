@@ -1,23 +1,18 @@
 {% extends 'core/index.html' %}
 {% block content %}
-  <div class="container" >
-    <div class="inputinoutput">
-      
-    <div class="col-xs-12 col-md-6 col-md-6" id="output">
-      <div class="outputtext">
-        <p>Input Image</p>
-      </div>
-    <img class='img-responsive' src="{{path}}" alt="not working" />
-   
+  <div class="container"  > 
+    <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6" id="output">
+        <div class="card center" style="text-align: center;">
+        <p id="labels">Input Image</p>
+    <img class='img-responsive' style="height:300px" src="{{path}}" alt="not working" />
     </div>
     </div>
-    <div class="outputtable">
-    <div class="col-xs-12 col-md-6 col-md-6"  id="output">
-      <div class="outputtext">
-      
-        <p>Output Data Table</p>
-      </div>
-    <table id='t01'>
+
+    <div class="col-xs-6 col-sm-6 col-md-6"  id="output">
+      <div class="card center" >
+        <p id="labels">Output Data Table</p>
+    <table id='t01' class="center tableheight">
     <tr>
     <th>X-axis tittles</th>
     <th colspan={{columns}}>Values</th> 
@@ -35,21 +30,19 @@
     {% endfor %}
     </table>
     
-    
+  </div>
     </div>
     </div>
+ 
     
    
-    
-   
-  
-    <div class="latexstyle">
+  <div class="center">
       <div class="col-xs-12 col-md-12">
     <div class="latextext">
       
-      <p>Latex script</p>
+      <p class="center">Latex script</p>
     </div>
-     <textarea id="textarea" rows=35 cols=55>
+     <textarea id="textarea" readonly rows=35 cols=55>
      {{outputlatex}}
      </textarea>
     
@@ -58,6 +51,62 @@
     </div>
   </div>
   </div>
+
+<!---Contact section -->
+  <section id="contact">
+    <div class="footbar" style="margin-top: auto;">
+     <div class="row footrow">
+       <h4 class="made">Made with &nbsp;<i class="fa fa-heart" style="font-size:20px;color:#282833"></i>&nbsp;&nbsp;by</h4>
+       <div class="col-sm-6 col-xs-6 col-md-6">
+         <h3><strong>Contact Us</strong></h3><br>
+      <h4>Raghav Ranjan</h4>
+      <p style="font-size:15px"> <i class="fa fa-envelope" style="font-size:25px;color:#282833" ></i>&nbsp;ranjan.1@iitj.ac.in</p>
+      
+ 
+      <a href="https://github.com/raghavranjan005"><i class="fa fa-github" style="font-size:25px;color:#282833"></i></a> &nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/raghav-ranjan-827837190/"><i class="fa fa-linkedin" style="font-size:25px;color:#282833"></i></a>&nbsp;&nbsp;&nbsp;
+      <a href="https://www.facebook.com/raghav.ranjan.311056"><i class="fa fa-facebook" style="font-size:25px;color:#282833"></i></a>&nbsp;&nbsp;&nbsp;
+      <a href="https://www.instagram.com/raghav__005/"><i class="fa fa-instagram" style="font-size:25px;color:#282833"></i></a>
+ 
+      <br><br>
+      <h4>Arpit Gupta</h4>
+      <p style="font-size:15px"> <i class="fa fa-envelope" style="font-size:25px;color:#282833" ></i>&nbsp;gupta.25@iitj.ac.in</p>
+      
+ 
+      <a href="https://github.com/arpitgupta1906/"><i class="fa fa-github" style="font-size:25px;color:#282833"></i></a> &nbsp;&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/in/arpit-gupta-46462819b/"><i class="fa fa-linkedin" style="font-size:25px;color:#282833"></i></a>&nbsp;&nbsp;&nbsp;
+      <a href="https://www.facebook.com/arpitgupta1906"><i class="fa fa-facebook" style="font-size:25px;color:#282833"></i></a>&nbsp;&nbsp;&nbsp;
+      <a href="https://www.instagram.com/arpire1906/"><i class="fa fa-instagram" style="font-size:25px;color:#282833"></i></a>
+           <br><br>
+           <p>Project Mentored by: <h4>Dr. Anand Mishra</h4></p>
+           <p>Assistant Professor,IIT Jodhpur</p>
+           <br><br>
+    </div>
+    <div class="col-sm-6 col-xs-6 col-md-6">
+      <div class="feedback">
+ 
+       <h3><strong>Feedback</strong></h3>
+       <br>
+     <form class= "feedbackform" action="/action_page.php" method="get" >
+       <input placeholder="Full Name" type="text" id="fname" name="fname" style="height:30px;width:70%;border-radius: 5px;text-indent: 10px;" ><br><br>
+       <input placeholder="Email-Id"type="text" id="lname" name="lname" style="width:70%;border-radius: 5px;text-indent: 10px;"><br><br>
+       <input placeholder="Feedback :) "type="text" id="feedbackinput" style="padding-bottom:200px;width:90%;border-radius: 5px;text-indent: 10px;">
+ 
+     </form>
+     <button type="submit" form="nameform" value="Submit" id="send">Send</button>
+     </div>
+   </div>
+     
+ </div>
+ <hr class="new1"></hr>
+ <div class="row">
+ <div class="col-sm-12 col-xs-12 col-md-12" style="background-color:#b8bac2 ;">
+         <p>Copyright © 2020 | Raghav Ranjan  &  Arpit Gupta</p>
+       </div>
+ </div>
+ </div>
+  </section>
+ 
   
 
   

@@ -9,6 +9,7 @@
   
     <script src="{% static 'core/js/jquery.min.js' %}"></script>
     <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
@@ -16,9 +17,14 @@
 <body>
 
 
-
+  <script>
+    function goBack() {
+      window.history.back()
+    }
+    </script>
 
   <!--navbar-->
+ 
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -28,44 +34,24 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="margin-left:5px;" href="">Scientific Chart Reader</a>
+            <a class="navbar-brand" style="margin-left:5px;" onclick="goBack()">Scientific Chart Reader</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="">Home</a></li>
-             <li class="dropdown">
-                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contact Us <span class="caret"></span></a>
-                <ul class="dropdown-menu" style="background-color: #f2f2ff;">
-                  <li><p>
-                   </br> 
-                   &nbsp; Arpit&nbsp;Gupta</br>
-                   &nbsp; gupta.25@iitj.ac.in</br>
-                  </br>
-                   
-                   &nbsp; Raghav&nbsp;Ranjan</br>
-                    &nbsp; ranjan.1@iitj.ac.in</br>
-                  </br>
-
-                 
-
-                  </p></li>
-                  
-                </ul>
-              </li> 
-            
-              <li><a href="#">Feedback</a></li>
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#contact" class="scroll-link">Contact</a></li>
+              <li><a href="#contact">Feedback</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="https://github.com/arpitgupta1906"><img src="../media/core/git.png" height="23" width="25" style="margin-right: 10px;"></a></li>
-              <li><a href="https://www.facebook.com/raghav.ranjan.311056"><img src="../media/core/facebook.png" height="23" width="25" style="margin-right: 10px;"></a></li>
-              <li><a href="https://www.instagram.com/raghav__005/"><img src="../media/core/instagram.png" height="23" width="25" style="margin-right: 5px;"></a></li>
+              <ul style="float: right;">
+              <a href="https://github.com/raghavranjan005"><i class="fa fa-github" style="font-size:30px;color:#282833;margin-top: 8px;"></i></a>
             </ul>
           </div>
         </div>
       </nav>
 
+     
       <!--container-->
-
+      
       <div class="row" id="section-1-gradient">
         <div class="col-sm-6">
           <h1 class="large">Scientific Chart Reader</h1>
@@ -76,16 +62,14 @@
           </div>
         </div>
       </div>
-      
+  
+      <div class="particle" >
+        <!-- particles.js container -->
+         <div id="particles-js" style="max-height: 2000px;">
 
-<div class="particle">
-<!-- particles.js container -->
- <div id="particles-js">
-  
-  
  </div>
-
 </div>
+
 
 {% block content %}
    {% endblock  %}
