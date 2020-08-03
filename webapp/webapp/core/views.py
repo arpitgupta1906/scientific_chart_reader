@@ -7,7 +7,8 @@ from .models import IMAGE
 from .forms import ImageUploadForm
 from django.urls import reverse_lazy
 import os
-
+# from multiprocessing import Process
+# import time
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,22 +31,7 @@ class ImageInputView(CreateView):
 
 
 class OutputView(View):
-    # def get(self,request):
-    #     img=IMAGE.objects.order_by('-pk')[0]
-    #     img_path=img.data.url
-
-    #     img_patha=img_path
-    #     #to get absolute file path
-    #     img_path=BASE_DIR+img_path
-    #     output_data=outputfunction(img_path)
-    #     # data=json.loads(output_data)
-    #     # labels=output_data[0]
-    #     # readings=output_data[1]
-    #     return render(request,'core/output.html',{
-    #         'path':img_patha,
-    #         'outputdata':output_data[0],
-    #         'outputlatex':output_data[1]
-    #         })
+    
 
     def get(self,request):
         
@@ -53,16 +39,23 @@ class OutputView(View):
         img_path=img.data.url
 
         img_patha=img_path
-
         img_path=BASE_DIR+img_path
-        output_data=outputfunction(img_path)
 
-        return render(request,'core/output.html',{
-            'path':img_patha,
-            'outputdata':output_data[0],
-            'outputlatex':output_data[1],
-            'columns':output_data[2]
-            })
+        try:
+
+            # p=Process(target=outputfunction,args=(img_path,))
+            output_data=outputfunction(img_path)
+
+            return render(request,'core/output.html',{
+                'path':img_patha,
+                'outputdata':output_data[0],
+                'outputlatex':output_data[1],
+                'columns':output_data[2]
+                })
+
+        except:
+            return render(request, 'core/input.html',{
+                'error':'Sorry!, the input image is not supported by our algorithm'})
 
 
 

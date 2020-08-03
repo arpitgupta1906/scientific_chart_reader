@@ -5,3 +5,7 @@ BargraphDataset
 /BargraphDataset
 dl/Doublebargraphfordl
 webapp/bargraph_classifier_50epoch_vgg16.h5
+webapp/webapp/core/__pycache__
+webapp/webapp/webapp/__pycache__
+webapp/webapp/core/maincode/__pycache__
+webapp/webapp/core/maincode/bargraph_classifier_50epoch_vgg16.h5

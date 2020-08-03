@@ -32,15 +32,15 @@ def classifier(img_path):
     # print(prediction[0])
     df = df.sort_values(by='pred', ascending=False, na_position='first')
     #print prediction
-    print(df)
-    print("Classification Type_index")
+    # print(df)
+    # print("Classification Type_index")
     index=df[df == df.iloc[0]].index[0]
 
     # print(index)
 
     #if want name too
     Type=['abar_vertical_stacked', 'bar_horizontal_stacked', 'cvertical_bargraph', 'horizontal_bargraph']
-    print("Type_name")
-    print(Type[index])
+    # print("Type_name")
+    # print(Type[index])
 
     return index

@@ -25,3 +25,8 @@ table {
     height: auto;
   
   }
+
+
+.error{
+  color: red;
+}
