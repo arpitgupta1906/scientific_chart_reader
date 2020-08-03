@@ -1,6 +1,3 @@
-# import os, sys
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from .vertical_mixed import mainvalue_vmixed
 from vertical_stack import mainvalue_vstack
 from horizontal_mixed import mainvalue_hmixed
