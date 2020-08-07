@@ -81,5 +81,5 @@ def mainfunction(img_path):
     return [data['datatitles'],bar_readings]
 
 if __name__ == "__main__":
-    img_path="images.png"
+    img_path="case2.png"
     print(mainfunction(img_path))

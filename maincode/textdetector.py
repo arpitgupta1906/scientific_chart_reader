@@ -34,13 +34,12 @@ def graphtextdetextor(image_path):
 
 
 
-    # d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
     # print(text)
-    return [text,text2]
 
 
 
+    # d=pytesseract.image_to_data(img,config=custom_config,output_type=Output.DICT)
 
     # n_boxes = len(d['text'])
     # for i in range(n_boxes):
@@ -51,12 +50,14 @@ def graphtextdetextor(image_path):
 
 
 
-    # cv2.imshow('img', img)
+    # plt.imshow(img)
+    # plt.show()
     # cv2.waitKey(0)
 
+    return [text,text2]
 
 if "__main__"== __name__:
-    image_path='vertical_mixed/case1.png'
+    image_path='image1.png'
     d=graphtextdetextor(image_path)
     print(d)
     

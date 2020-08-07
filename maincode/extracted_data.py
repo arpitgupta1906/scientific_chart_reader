@@ -101,6 +101,6 @@ def extractdata(image_path):
 
 
 if __name__=='__main__':
-    image_path='7.jpg'
+    image_path='image1.png'
     a=extractdata(image_path)
     print(a)

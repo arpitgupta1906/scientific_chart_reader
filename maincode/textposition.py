@@ -126,9 +126,9 @@ def barlabelandheightratio(img,yaxisminimum=0):
     
 
 if __name__=="__main__":
-    img_path = 'image4.png'
+    img_path = 'image2.png'
     img=cv2.imread(img_path)
-    yaxisminimum=554
+    yaxisminimum=530
     d=barlabelandheightratio(img,yaxisminimum)
     print(d)
     plt.imshow(img)
