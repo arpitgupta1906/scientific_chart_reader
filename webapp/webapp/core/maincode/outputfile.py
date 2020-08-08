@@ -105,5 +105,5 @@ def table_to_latex(output,columns):
 
 if __name__ == "__main__":
     # print(table_to_latex({"first":[1,2],"second":[2,3]},2))
-    print(outputfunction('image1.png'))
+    print(outputfunction('test.png'))
     print("works")

@@ -41,6 +41,6 @@ def classifier(img_path):
     #if want name too
     Type=['abar_vertical_stacked', 'bar_horizontal_stacked', 'cvertical_bargraph', 'horizontal_bargraph']
     # print("Type_name")
-    # print(Type[index])
+    print(Type[index])
 
     return index
