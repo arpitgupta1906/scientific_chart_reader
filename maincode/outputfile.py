@@ -12,8 +12,8 @@ def classify(img_path):
     """
     A deep learning classifier to classify the type of graph
     """    
-    return classifier(img_path)
-    # return 0
+    # return classifier(img_path)
+    return 2
 
 def outputfunction(img_path):
     """
@@ -108,5 +108,5 @@ def table_to_latex(output,columns):
 
 if __name__ == "__main__":
     # print(table_to_latex({"first":[1,2],"second":[2,3]},2))
-    print(outputfunction('image2.png'))
+    print(outputfunction('image1579.png'))
     print("works")
