@@ -55,8 +55,43 @@ def graphtextdetextor(image_path):
 
     return [text,text2]
 
+
+def boundingbox(image_path):
+
+    custom_config=r'--oem 3 --psm 6'
+
+    image = cv2.imread(image_path)
+    rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    results = pytesseract.image_to_data(rgb, config=custom_config,output_type=Output.DICT)
+
+    for i in range(0, len(results["text"])):
+
+        x=results["left"][i]
+        y=results["top"][i]
+        w=results["width"][i]
+        h=results["height"][i]
+
+        text=results["text"][i]
+        conf=int(results["conf"][i])
+
+        #filter out weak confidence text localizations
+
+        if conf>50:
+            text="".join([c if ord(c)<128 else "" for c in text]).strip()
+            cv2.rectangle(image, (x,y), (x+w,y+h), (0,255,0), 2)
+            cv2.putText(image, text, (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+
+    print("here")
+
+    plt.imshow(image)
+    plt.show()
+    cv2.waitKey(0)
+
+
+
 if "__main__"== __name__:
     image_path='image1.png'
-    d=graphtextdetextor(image_path)
-    print(d)
+    boundingbox(image_path)
+    # d=graphtextdetextor(image_path)
+    # print(d)
     
