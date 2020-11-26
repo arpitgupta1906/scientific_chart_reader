@@ -5,7 +5,7 @@ from vertical_mixed import mainvalue_vmixed
 from vertical_stack import mainvalue_vstack
 from horizontal_mixed import mainvalue_hmixed
 from horizontal_stack import mainvalue_hstack
-from deep_learning_predictor import classifier
+# from deep_learning_predictor import classifier
 
 ##not connected
 def classify(img_path):
@@ -108,5 +108,5 @@ def table_to_latex(output,columns):
 
 if __name__ == "__main__":
     # print(table_to_latex({"first":[1,2],"second":[2,3]},2))
-    print(outputfunction('image1579.png'))
+    print(outputfunction('sir1.png')[0])
     print("works")

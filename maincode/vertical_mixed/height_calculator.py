@@ -20,14 +20,14 @@ def xaxiscoordinate(image):
                     break
             if flag==1:
                 return [y,x] 
-
+    
 
 def heightcalculator(image):
 
     h,w=image.shape
 
     xy,xx=xaxiscoordinate(image)
-
+    
     y=yinitial=xy 
     x=xinitial=(xx+3)
     bar_coordinates=[]
@@ -47,7 +47,7 @@ def heightcalculator(image):
             flag=1
         
         y+=5
-
+        
         while flag==1 and image[y,x]==0 and image[y-10,x]!=0 and image[y+10,x]==0 and x<w-10:
             x+=1 
 
@@ -67,6 +67,8 @@ def heightcalculator(image):
     return [xy,bar_heights,bar_coordinates,width]
 
 if __name__ == "__main__":
-    image_path="test_filtered.png"
+    image_path="test.png"
     image=cv2.imread(image_path,0)
+    plt.imshow(image,cmap="gray")
+    plt.show()
     print(heightcalculator(image))

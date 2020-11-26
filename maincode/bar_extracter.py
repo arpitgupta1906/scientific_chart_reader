@@ -35,9 +35,9 @@ def obtainbars(img):
 if __name__=="__main__":
     # Read the image
     # img = cv2.imread('1.png', 0)
-    img=cv2.imread('test.png',0)
+    img=cv2.imread('sir1.png',0)
     horizontal_lines_img=obtainbars(img)
-    # cv2.imwrite("test.png",horizontal_lines_img)
+    cv2.imwrite("test.png",horizontal_lines_img)
     plt.imshow(horizontal_lines_img,cmap="gray")
     plt.show()
 
