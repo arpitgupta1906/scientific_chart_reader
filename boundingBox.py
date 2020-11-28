@@ -76,10 +76,10 @@ def boundingbox(image_path):
 
         #filter out weak confidence text localizations
 
-        if conf>50:
+        if conf>0:
             text="".join([c if ord(c)<128 else "" for c in text]).strip()
             cv2.rectangle(image, (x,y), (x+w,y+h), (0,255,0), 2)
-            cv2.putText(image, text, (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+            cv2.putText(image, text, (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
 
     print("here")
 
@@ -90,7 +90,7 @@ def boundingbox(image_path):
 
 
 if "__main__"== __name__:
-    image_path='image1.png'
+    image_path='please3.png'
     boundingbox(image_path)
     # d=graphtextdetextor(image_path)
     # print(d)

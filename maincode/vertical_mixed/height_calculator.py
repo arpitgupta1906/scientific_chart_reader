@@ -45,7 +45,7 @@ def heightcalculator(image):
         while image[y,x]==0 and y>30:
             y-=1
             flag=1
-        
+            
         y+=5
         
         while flag==1 and image[y,x]==0 and image[y-10,x]!=0 and image[y+10,x]==0 and x<w-10:
@@ -56,7 +56,7 @@ def heightcalculator(image):
             bar_coordinates.append([xinitial,x])
             xinitial=x
             y=yinitial
-
+            
     diff=[]
     for bar in bar_coordinates:
         diff.append(ceil(bar[1]-bar[0]))
@@ -68,6 +68,7 @@ def heightcalculator(image):
 
 if __name__ == "__main__":
     image_path="test.png"
+    # image_path="please_test.png"
     image=cv2.imread(image_path,0)
     plt.imshow(image,cmap="gray")
     plt.show()
